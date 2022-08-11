@@ -1,14 +1,15 @@
 
 
+// ignore_for_file: file_names
+
 import 'package:flutter/material.dart';
 import 'package:news_app_with_clean_architecture/features/news/domain/entities/news_entity.dart';
 
-class BusinessNewsList extends StatelessWidget {
-  final List<News> news;
+class NewsList extends StatelessWidget {
+  final News news;
 
-  const BusinessNewsList({super.key, required this.news});
+  const NewsList({super.key, required this.news});
 
-  get index => null;
 
   @override
   Widget build(BuildContext context) {
@@ -21,25 +22,33 @@ class BusinessNewsList extends StatelessWidget {
               Expanded(
                 flex: 1,
                 child: Image(
-                  image: NetworkImage(news[index].articles.urlToImage),
+                  image: NetworkImage(news.articles[index].urlToImage ?? 'https://thumbs.dreamstime.com/b/no-image-available-icon-vector-illustration-flat-design-140633878.jpg'),
+                  fit: BoxFit.cover,
                 ),
               ),
+              const SizedBox(width: 20,),
               Expanded(
                 flex: 2,
                 child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text(news[index].articles.title,
+                    Text(news.articles[index].title,
                       maxLines: 3,
                       overflow: TextOverflow.ellipsis,
+                      style: const TextStyle(
+                        fontSize: 15.0,
+                        fontWeight: FontWeight.bold
+                      ),
                     ),
-                    Text(news[index].articles.publishedAt,),
+                    const SizedBox(height: 20,),
+                    Text(news.articles[index].publishedAt,),
                   ],
                 ),
               ),
             ],
           );
         },
-        itemCount: news.length,
+        itemCount: news.articles.length,
         separatorBuilder: (BuildContext context, int index) => const Divider(
           thickness: 3.0,
         ),

@@ -29,20 +29,6 @@ class _NewsBottomNavBarState extends State<NewsBottomNavBar> {
         title: const Text(
           'News App',
         ),
-        actions: [
-          IconButton(
-            icon: const Icon(
-              Icons.search,
-            ),
-            onPressed: () {},
-          ),
-          IconButton(
-            icon: const Icon(
-              Icons.brightness_4_outlined,
-            ),
-            onPressed: () {},
-          ),
-        ],
       ),
       body: screens[currentIndex],
       bottomNavigationBar: BottomNavigationBar(
@@ -55,13 +41,13 @@ class _NewsBottomNavBarState extends State<NewsBottomNavBar> {
             icon: Icon(Icons.business),
             label: 'Business',
           ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.science),
+            label: 'Science',
+          ),
            BottomNavigationBarItem(
             icon: Icon(Icons.sports),
             label: 'Sports',
-          ),
-           BottomNavigationBarItem(
-            icon: Icon(Icons.science),
-            label: 'Science',
           ),
         ],
       ),

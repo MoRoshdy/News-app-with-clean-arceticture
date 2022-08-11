@@ -1,4 +1,5 @@
 import 'package:equatable/equatable.dart';
+import 'package:news_app_with_clean_architecture/features/news/domain/entities/article_entity.dart';
 
 class News extends Equatable {
   const News({required this.totalResults, required this.articles});
@@ -8,19 +9,4 @@ class News extends Equatable {
 
   @override
   List<Object?> get props => [totalResults, articles];
-}
-
-
-
-class Article extends Equatable {
-  const Article(
-      {required this.title, required this.url, this.urlToImage, required this.publishedAt});
-
-  final String title;
-  final String url;
-  final String? urlToImage;
-  final DateTime publishedAt;
-
-  @override
-  List<Object?> get props => [title, url, urlToImage, publishedAt];
 }

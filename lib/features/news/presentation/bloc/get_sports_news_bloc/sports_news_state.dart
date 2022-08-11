@@ -15,7 +15,7 @@ class SportsNewsInitial extends SportsNewsState {
 class LoadingSportsNewsState extends SportsNewsState{}
 
 class LoadedSportsNewsState extends SportsNewsState{
-  final List<News> news;
+  final News news;
 
   const LoadedSportsNewsState({required this.news});
 

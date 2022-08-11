@@ -6,9 +6,14 @@ import 'package:news_app_with_clean_architecture/features/news/data/data_sources
 import 'package:news_app_with_clean_architecture/features/news/data/news_repository_imp/news_repository_imp.dart';
 import 'package:news_app_with_clean_architecture/features/news/domain/repository/news_repository.dart';
 import 'package:news_app_with_clean_architecture/features/news/domain/usecases/get_business_news_usecase.dart';
+import 'package:news_app_with_clean_architecture/features/news/domain/usecases/get_science_news_usecase.dart';
+import 'package:news_app_with_clean_architecture/features/news/domain/usecases/get_sports_news_usecase.dart';
 import 'package:news_app_with_clean_architecture/features/news/presentation/bloc/get_business_news_bloc/business_news_bloc.dart';
 import 'package:http/http.dart' as http;
+import 'package:news_app_with_clean_architecture/features/news/presentation/bloc/get_science_news_bloc/science_news_bloc.dart';
+import 'package:news_app_with_clean_architecture/features/news/presentation/bloc/get_sports_news_bloc/sports_news_bloc.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+
 
 final sl = GetIt.instance;
 
@@ -18,14 +23,14 @@ Future<void> init() async {
   // Bloc
 
   sl.registerFactory(() => BusinessNewsBloc(getBusinessNews: sl()));
-  // sl.registerFactory(() => ScienceNewsBloc(getScienceNews: sl()));
-  // sl.registerFactory(() => SportsNewsBloc(getSportsNews: sl()));
+  sl.registerFactory(() => ScienceNewsBloc(getScienceNews: sl()));
+  sl.registerFactory(() => SportsNewsBloc(getSportsNews: sl()));
 
   // UseCases
 
   sl.registerLazySingleton(() => GetBusinessNewsUseCase(sl()));
-  // sl.registerLazySingleton(() => GetScienceNewsUseCase(sl()));
-  // sl.registerLazySingleton(() => GetSportsNewsUseCase(sl()));
+  sl.registerLazySingleton(() => GetScienceNewsUseCase(sl()));
+  sl.registerLazySingleton(() => GetSportsNewsUseCase(sl()));
 
   // Repository
 

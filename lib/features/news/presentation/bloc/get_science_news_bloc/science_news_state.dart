@@ -15,7 +15,7 @@ class ScienceNewsInitial extends ScienceNewsState {
 class LoadingScienceNewsState extends ScienceNewsState{}
 
 class LoadedScienceNewsState extends ScienceNewsState{
-  final List<News> news;
+  final News news;
 
   const LoadedScienceNewsState({required this.news});
 

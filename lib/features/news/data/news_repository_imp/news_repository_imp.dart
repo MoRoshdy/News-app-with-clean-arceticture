@@ -16,7 +16,7 @@ class NewsRepositoryImp implements NewsRepository{
   NewsRepositoryImp({required this.networkInfo, required this.remoteDataSource, required this.localDataSource});
 
   @override
-  Future<Either<Failure, List<News>>> getBusinessNews() async{
+  Future<Either<Failure, News>> getBusinessNews() async{
     if(await networkInfo.isConnected){
       try{
         final remoteNews = await remoteDataSource.getBusinessNews();
@@ -36,7 +36,7 @@ class NewsRepositoryImp implements NewsRepository{
   }
 
   @override
-  Future<Either<Failure, List<News>>> getScienceNews() async {
+  Future<Either<Failure, News>> getScienceNews() async {
     if(await networkInfo.isConnected){
       try{
         final remoteNews = await remoteDataSource.getScienceNews();
@@ -56,7 +56,7 @@ class NewsRepositoryImp implements NewsRepository{
   }
 
   @override
-  Future<Either<Failure, List<News>>> getSportsNews() async {
+  Future<Either<Failure, News>> getSportsNews() async {
     if(await networkInfo.isConnected){
       try{
         final remoteNews = await remoteDataSource.getSportsNews();

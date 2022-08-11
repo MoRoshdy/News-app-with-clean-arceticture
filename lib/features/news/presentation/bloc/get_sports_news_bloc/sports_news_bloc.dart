@@ -29,7 +29,7 @@ class SportsNewsBloc extends Bloc<SportsNewsEvent, SportsNewsState> {
   }
 
   SportsNewsState _mapFailureOrNewsToState(
-      Either<Failure, List<News>> either) {
+      Either<Failure, News> either) {
     return either.fold(
             (failure) => ErrorLoadingSportsNewsState(
             message: _mapFailureToMessage(failure)),

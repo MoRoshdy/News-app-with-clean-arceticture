@@ -29,7 +29,7 @@ class ScienceNewsBloc extends Bloc<ScienceNewsEvent, ScienceNewsState> {
   }
 
   ScienceNewsState _mapFailureOrNewsToState(
-      Either<Failure, List<News>> either) {
+      Either<Failure, News> either) {
     return either.fold(
             (failure) => ErrorLoadingScienceNewsState(
             message: _mapFailureToMessage(failure)),

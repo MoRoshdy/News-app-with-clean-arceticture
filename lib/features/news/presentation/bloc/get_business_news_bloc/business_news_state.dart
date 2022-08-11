@@ -15,7 +15,7 @@ class BusinessNewsInitial extends BusinessNewsState {
 class LoadingBusinessNewsState extends BusinessNewsState{}
 
 class LoadedBusinessNewsState extends BusinessNewsState{
-  final List<News> news;
+  final News news;
 
   const LoadedBusinessNewsState({required this.news});
 

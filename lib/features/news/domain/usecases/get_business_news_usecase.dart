@@ -8,7 +8,7 @@ class GetBusinessNewsUseCase{
 
   GetBusinessNewsUseCase(this.repository);
 
-  Future<Either<Failure, List<News>>> call() async {
+  Future<Either<Failure, News>> call() async {
     return await repository.getBusinessNews();
   }
 }

@@ -1,37 +1,32 @@
+import 'package:news_app_with_clean_architecture/features/news/data/models/article_model.dart';
+import 'package:news_app_with_clean_architecture/features/news/domain/entities/article_entity.dart';
 import 'package:news_app_with_clean_architecture/features/news/domain/entities/news_entity.dart';
+
 
 class NewsModel extends News {
   const NewsModel({required super.totalResults, required super.articles});
 
-  factory NewsModel.fromJson(Map<String, dynamic> json) => NewsModel(
-    totalResults: json["totalResults"],
-    articles: List<Article>.from(json["articles"].map((x) => ArticlesModel.fromJson(x))),
-  );
+  factory NewsModel.fromJson(Map<String, dynamic> json) {
+    return NewsModel(
+      totalResults: json['totalResults'],
+      articles: List<ArticleModel>.from(json['articles'].map((x) => ArticleModel.fromJson(x))),
+    );
+  }
 
-  Map<String, dynamic> toJson() => {
-    "totalResults": totalResults,
-    "articles": List<dynamic>.from(articles.map((x) => x.toJson())),
-  };
+  Map<String, dynamic> toJson() {
+    return {
+      'totalResults': totalResults,
+      'articles': List<dynamic>.from(articles.map((x) => x.toDataLayer().toJson())),
+    };
+  }
 }
 
-class ArticlesModel extends Article {
-  const ArticlesModel(
-      {required super.title,
-      required super.url,
-       super.urlToImage,
-      required super.publishedAt});
 
-  factory ArticlesModel.fromJson(Map<String, dynamic> json) => ArticlesModel(
-    title: json["title"],
-    url: json["url"],
-    urlToImage: json["urlToImage"],
-    publishedAt: DateTime.parse(json["publishedAt"]),
+extension on Article {
+  ArticleModel  toDataLayer() => ArticleModel(
+    title: title,
+    url: url,
+    publishedAt: publishedAt,
+    urlToImage: urlToImage,
   );
-
-  Map<String, dynamic> toJson() => {
-    "title": title,
-    "url": url,
-    "urlToImage": urlToImage,
-    "publishedAt": publishedAt.toIso8601String(),
-  };
 }
