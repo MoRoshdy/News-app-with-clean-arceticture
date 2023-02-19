@@ -1,4 +1,4 @@
-# news_app_with_clean_architecture
+# news_app_with_clean_architecture_using_Bloc
 
 A new Flutter project.
 
